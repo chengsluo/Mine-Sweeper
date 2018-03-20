@@ -5,8 +5,8 @@ HINSTANCE hInst;                                // 当前实例
 WCHAR szTitle[MAX_LOADSTRING];                  // 标题栏文本
 WCHAR szWindowClass[MAX_LOADSTRING];            // 主窗口类名
 
-int ma[32][32];  //生成的地图
-int mb[32][32];  //当前显示的地图
+int ma[50][50];  //生成的地图
+int mb[50][50];  //当前显示的地图
 int WIDTH;       //界面宽度
 int HEIGHT;      //界面高度
 int ROWS;     //行数
@@ -883,16 +883,16 @@ INT_PTR CALLBACK MySet(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 				M = 0;
 			}
 			bool isok = true;
-			if (a<10 || a>19) {
-				MessageBox(hDlg, TEXT("行数未在10-19之间"), TEXT("设置错误"), 0);
+			if (a<10 || a>50) {
+				MessageBox(hDlg, TEXT("行数未在10-50之间"), TEXT("设置错误"), 0);
 				isok = false;
 			}
-			if (b<10 || b>35) {
-				MessageBox(hDlg,  TEXT("列数未在10-35之间"), TEXT("设置错误"), 0);
+			if (b<10 || b>50) {
+				MessageBox(hDlg,  TEXT("列数未在10-50之间"), TEXT("设置错误"), 0);
 				isok = false;
 			}
 			if (c<0 || c>a*b*2/3) {
-				MessageBox(hDlg,TEXT("地雷数不合理"), TEXT("设置错误"), 0);
+				MessageBox(hDlg,TEXT("地雷数不合理,不应该大于总格子数的2/3"), TEXT("设置错误"), 0);
 				isok = false;
 			}
 			if (isok) {
